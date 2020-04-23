@@ -3,7 +3,7 @@
 '''
 @Author: Fei Pei
 @Date: 2020-04-14 16:54:13
-@LastEditTime: 2020-04-14 16:54:22
+@LastEditTime: 2020-04-23 18:05:22
 @LastEditors: Fei Pei
 '''
 
@@ -55,3 +55,9 @@ def get_folder(fullname):
 
     return os.path.abspath(folder)
 
+def get_pids(g_info):
+    """以列表形式返回符合grep 要求的所有pid"""
+    pids = os.popen(
+        "ps aux|grep %s |grep -v 'grep'|awk -F ' ' '{print $2}'" % g_info).read().split('\n')
+        
+    return pids
